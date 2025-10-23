@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yonaiker Contreras - Desarrollador y diseñador web profesional. Especialista en React, Node.js, HTML5, CSS3.">
+    <meta name="keywords" content="desarrollo web, diseñador web, React, Node.js, HTML5, CSS3, JavaScript, TypeScript, Next.js, MongoDB, MySQL, e-commerce, UI/UX, aplicaciones web, portfolio">
+    <meta name="author" content="Yonaiker Contreras">
+    <meta name="robots" content="index, follow">
+    <meta name="color-scheme" content="dark light">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zyvexweb.com/">
+    <meta property="og:title" content="ZyvexWeb | Desarrollo y Diseño Web Profesional">
+    <meta property="og:description" content="Yonaiker Contreras - Desarrollador y diseñador web profesional. Especialista en React, Node.js, HTML5, CSS3.">
+    <meta property="og:image" content="https://zyvexweb.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zyvexweb.com/">
+    <meta property="twitter:title" content="ZyvexWeb | Desarrollo y Diseño Web Profesional">
+    <meta property="twitter:description" content="Yonaiker Contreras - Desarrollador y diseñador web profesional. Especialista en React, Node.js, HTML5, CSS3.">
+    <meta property="twitter:image" content="https://zyvexweb.com/assets/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <title>ZyvexWeb | Desarrollo y Diseño Web Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f5ff;
+            --secondary: #7c3aed;
+            --accent: #ff006e;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --text: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 8%;
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 32px rgba(0, 245, 255, 0.3), 0 0 0 2px rgba(0, 245, 255, 0.2);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            border: 2px solid transparent;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15) translateY(-3px);
+            box-shadow: 0 15px 45px rgba(0, 245, 255, 0.5), 0 0 0 3px rgba(0, 245, 255, 0.4);
+        }
+
+        .whatsapp-tooltip {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.15), rgba(124, 58, 237, 0.15));
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 32px rgba(0, 245, 255, 0.2);
+            z-index: 998;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            white-space: nowrap;
+            max-width: 280px;
+            text-align: center;
+        }
+
+        .whatsapp-tooltip.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Desktop: texto más largo para el tooltip */
+        @media (min-width: 1025px) {
+            .whatsapp-tooltip-text::after {
+                content: " - WhatsApp";
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 8% 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+        }
+
+        .stats {
+            padding: 80px 8%;
+            background: var(--dark-light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .about {
+            padding: 100px 8%;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(124, 58, 237, 0.2));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(0, 245, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 18px;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+        }
+
+        .about-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .about-fallback {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 80px;
+            color: var(--primary);
+        }
+
+        .about-text h3 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            padding: 100px 8%;
+            background: var(--dark-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .tech-item:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-10px);
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        .tech-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .tech-name {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .process {
+            padding: 100px 8%;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-10px);
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .process-step h3 {
+            font-size: 22px;
+            margin: 20px 0 15px;
+            color: var(--primary);
+        }
+
+        .process-step p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .services {
+            padding: 100px 8%;
+            background: var(--dark-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 245, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 245, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .projects {
+            padding: 100px 8%;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--dark-light);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 245, 255, 0.3);
+            box-shadow: 0 25px 70px rgba(0, 245, 255, 0.2);
+        }
+
+        .project-video {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(124, 58, 237, 0.1));
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-video:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        .project-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 13px;
+        }
+
+        .project-info {
+            padding: 35px;
+        }
+
+        .testimonials {
+            padding: 100px 8%;
+            background: var(--dark-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .quote-icon {
+            font-size: 50px;
+            color: var(--primary);
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            color: var(--text-gray);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .contact {
+            padding: 100px 8%;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-form {
+            grid-column: span 2;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .form-description {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            color: var(--text-gray);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 245, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        footer {
+            background: var(--dark-light);
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: var(--text-gray);
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .footer-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .tag {
+            padding: 6px 16px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 50px;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(0, 245, 255, 0.2);
+            border-color: rgba(0, 245, 255, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 25px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-link:hover {
+            gap: 12px;
+            background: rgba(0, 245, 255, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .services-overview {
+            margin-top: 40px;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .service-feature:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-5px);
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .service-cta {
+            text-align: center;
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        /* Media Queries Responsivas */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                font-size: 16px;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 80px 5% 50px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                height: 300px;
+                order: 2;
+            }
+
+            .about-text {
+                order: 1;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-form {
+                grid-column: span 1;
+            }
+        }
+
+        /* Mobile: ajustar posición del tooltip para que no se salga de la pantalla */
+        @media (max-width: 768px) {
+            .whatsapp-tooltip {
+                right: 10px;
+                left: 10px;
+                bottom: 85px;
+                max-width: calc(100vw - 20px);
+                text-align: center;
+                transform: translateY(20px) scale(0.9);
+            }
+
+            .whatsapp-tooltip.show {
+                transform: translateY(0) scale(1);
+            }
+
+            nav {
+                padding: 15px 4%;
+            }
+
+            .hero {
+                padding: 70px 4% 40px;
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .stats {
+                padding: 60px 4%;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-item {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .about {
+                padding: 80px 4%;
+            }
+
+            .about-content {
+                gap: 30px;
+            }
+
+            .about-text h3 {
+                font-size: 28px;
+            }
+
+            .about-text p {
+                font-size: 16px;
+            }
+
+            .tech-stack, .process, .services, .projects, .testimonials, .contact {
+                padding: 80px 4%;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+
+            .tech-item {
+                padding: 20px;
+            }
+
+            .tech-icon {
+                font-size: 40px;
+            }
+
+            .tech-name {
+                font-size: 13px;
+            }
+
+            .process-grid, .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-info {
+                padding: 25px;
+            }
+
+            .project-info h3 {
+                font-size: 20px;
+            }
+
+            .project-info p {
+                font-size: 14px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+
+            .contact-form h3 {
+                font-size: 20px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px 12px;
+                font-size: 16px;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+
+            .whatsapp-tooltip {
+                bottom: 85px;
+                right: 20px;
+                font-size: 10px;
+                padding: 6px 10px;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-tooltip {
+                right: 5px;
+                left: 5px;
+                bottom: 75px;
+                max-width: calc(100vw - 10px);
+                font-size: 8px;
+                padding: 4px 6px;
+            }
+
+            nav {
+                padding: 12px 3%;
+            }
+
+            .hero {
+                padding: 60px 3% 30px;
+                min-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .hero-buttons {
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
+            .stats {
+                padding: 50px 3%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .stat-label {
+                font-size: 14px;
+            }
+
+            .about {
+                padding: 60px 3%;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .about-text h3 {
+                font-size: 24px;
+            }
+
+            .about-text p {
+                font-size: 15px;
+            }
+
+            .tech-stack, .process, .services, .projects, .testimonials, .contact {
+                padding: 60px 3%;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .section-description {
+                font-size: 14px;
+            }
+
+            .section-tag {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .tech-item {
+                padding: 15px;
+            }
+
+            .tech-icon {
+                font-size: 35px;
+            }
+
+            .tech-name {
+                font-size: 12px;
+            }
+
+            .process-step, .service-card, .testimonial-card {
+                padding: 25px;
+            }
+
+            .process-step h3, .service-card h3 {
+                font-size: 18px;
+            }
+
+            .process-step p, .service-card p, .testimonial-text {
+                font-size: 14px;
+            }
+
+            .project-info {
+                padding: 20px;
+            }
+
+            .project-info h3 {
+                font-size: 18px;
+            }
+
+            .project-info p {
+                font-size: 13px;
+            }
+
+            .contact-form {
+                padding: 15px;
+            }
+
+            .contact-form h3 {
+                font-size: 18px;
+            }
+
+            .form-description {
+                font-size: 13px;
+            }
+
+            .form-group label {
+                font-size: 11px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 8px 10px;
+                font-size: 16px;
+                border-radius: 8px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 20px;
+            }
+
+            .whatsapp-tooltip {
+                bottom: 75px;
+                right: 15px;
+                font-size: 9px;
+                padding: 5px 8px;
+                max-width: 180px;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- EmailJS - Versión más reciente -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("Q-KVIfSHrlxpvvJH5");
+        })();
+    </script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo-container">
+            <div class="logo-icon">Z</div>
+            <div class="logo-text">ZyvexWeb</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre Mí</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <a href="https://wa.me/51906057426?text=Hola%20Yonaiker,%20estoy%20interesado%20en%20tus%20servicios%20de%20desarrollo%20web" target="_blank" rel="noopener" class="whatsapp-float" title="Contáctame por WhatsApp" aria-label="Contactar por WhatsApp - Yonaiker Contreras">💬</a>
+
+    <!-- WhatsApp Tooltip -->
+    <div class="whatsapp-tooltip" id="whatsappTooltip">
+        <div class="whatsapp-tooltip-glow"></div>
+        <span class="whatsapp-tooltip-text">💬 ¡CONTÁCTAME!</span>
+    </div>
+
+    <section class="hero" id="inicio">
+        <div class="grid-bg"></div>
+        <div class="hero-content scroll-reveal">
+            <h1>Hola, soy <span class="gradient-text">Yonaiker Contreras</span></h1>
+            <p>Transformo ideas en experiencias web excepcionales. Desarrollo completo desde el concepto hasta el lanzamiento, creando sitios web modernos, funcionales y optimizados que impulsan tu negocio.</p>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid scroll-reveal">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Proyectos Completados</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">35+</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Trabajo Remoto</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="sobre-mi">
+        <div class="about-content scroll-reveal">
+            <div class="about-image">
+                <img src="logo-mi marca/Captura de pantalla 2025-10-22 033225.png" alt="Logo de ZyvexWeb - Yonaiker Contreras - Desarrollador y Diseñador Web Profesional" class="about-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="about-fallback">🏢</div>
+            </div>
+            <div class="about-text">
+                <h3>Sobre Mí</h3>
+                <p>Soy Yonaiker Contreras, desarrollador y diseñador web con más de 3 años de experiencia creando soluciones digitales innovadoras. Mi pasión es transformar ideas complejas en interfaces simples y funcionales.</p>
+                <p>Me especializo en desarrollo web completo, desde el diseño UI/UX hasta la implementación de sistemas backend robustos. Trabajo con tecnologías modernas como React, Node.js, WordPress y muchas otras para crear sitios web profesionales y funcionales. Trabajo de forma 100% remota, lo que me permite colaborar con clientes de cualquier parte del mundo.</p>
+                <p>Mi enfoque se centra en entregar proyectos de alta calidad, cumpliendo siempre con los plazos establecidos y manteniendo una comunicación constante con mis clientes. Cada proyecto es una oportunidad para superar expectativas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <div class="section-header scroll-reveal">
+            <div class="section-tag">TECNOLOGÍAS</div>
+            <h2 class="section-title">Stack Tecnológico</h2>
+            <p class="section-description">Herramientas y tecnologías que domino para crear soluciones web de alta calidad.</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🌐</span>
+                <div class="tech-name">HTML5</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🎨</span>
+                <div class="tech-name">CSS3</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">⚡</span>
+                <div class="tech-name">JavaScript</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">⚛️</span>
+                <div class="tech-name">React</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">📱</span>
+                <div class="tech-name">React Native</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🟢</span>
+                <div class="tech-name">Node.js</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🗄️</span>
+                <div class="tech-name">MongoDB</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🐘</span>
+                <div class="tech-name">MySQL</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🎯</span>
+                <div class="tech-name">TypeScript</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🎭</span>
+                <div class="tech-name">Tailwind CSS</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">📦</span>
+                <div class="tech-name">Next.js</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">🔥</span>
+                <div class="tech-name">Firebase</div>
+            </div>
+            <div class="tech-item scroll-reveal">
+                <span class="tech-icon">📝</span>
+                <div class="tech-name">WordPress</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="section-header scroll-reveal">
+            <div class="section-tag">PROCESO</div>
+            <h2 class="section-title">Cómo Trabajo</h2>
+            <p class="section-description">Un proceso claro y eficiente para llevar tu proyecto de la idea a la realidad.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step scroll-reveal">
+                <div class="step-number">1</div>
+                <h3>Consulta Inicial</h3>
+                <p>Conversamos sobre tu proyecto, objetivos y necesidades. Analizo los requisitos y te proporciono una cotización detallada con tiempos de entrega.</p>
+            </div>
+            <div class="process-step scroll-reveal">
+                <div class="step-number">2</div>
+                <h3>Diseño & Planificación</h3>
+                <p>Creo mockups y prototipos del diseño. Una vez aprobado, planifico la arquitectura técnica y establezco los hitos del proyecto.</p>
+            </div>
+            <div class="process-step scroll-reveal">
+                <div class="step-number">3</div>
+                <h3>Desarrollo</h3>
+                <p>Codifico tu proyecto con las mejores prácticas, manteniendo comunicación constante y mostrando avances regulares para tu feedback.</p>
+            </div>
+            <div class="process-step scroll-reveal">
+                <div class="step-number">4</div>
+                <h3>Entrega & Soporte</h3>
+                <p>Realizo pruebas exhaustivas, entrego el proyecto completo y proporciono documentación. Incluyo soporte post-entrega para cualquier ajuste.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="section-header scroll-reveal">
+            <div class="section-tag">SERVICIOS</div>
+            <h2 class="section-title">¿Qué puedo hacer por ti?</h2>
+            <p class="section-description">Ofrezco servicios completos de desarrollo y diseño web, adaptados a tus necesidades específicas.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">🎨</span>
+                <h3>Diseño Web UI/UX</h3>
+                <p>Diseños modernos, intuitivos y centrados en el usuario. Interfaces que conectan con tu audiencia y mejoran la experiencia.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">💻</span>
+                <h3>Desarrollo Frontend</h3>
+                <p>Sitios web responsivos y rápidos con las últimas tecnologías: HTML5, CSS3, JavaScript, React y más.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">⚙️</span>
+                <h3>Desarrollo Backend</h3>
+                <p>Sistemas robustos y escalables. Bases de datos, APIs y toda la lógica necesaria para tu aplicación.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">🛒</span>
+                <h3>E-commerce</h3>
+                <p>Tiendas online completas con sistemas de pago, gestión de inventario y panel de administración.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">🚀</span>
+                <h3>Landing Pages</h3>
+                <p>Páginas de aterrizaje optimizadas para conversión. Perfectas para campañas de marketing y lanzamientos.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">📱</span>
+                <h3>Aplicaciones Web</h3>
+                <p>Aplicaciones web personalizadas, dashboards administrativos y sistemas a medida para tu negocio.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">📝</span>
+                <h3>Sitios WordPress</h3>
+                <p>Sitios web profesionales desarrollados con WordPress, incluyendo temas personalizados, plugins y optimización SEO.</p>
+            </div>
+            <div class="service-card scroll-reveal">
+                <span class="service-icon">🔧</span>
+                <h3>Mantenimiento & Soporte</h3>
+                <p>Soporte técnico completo y mantenimiento. La primera actualización después de la entrega es completamente gratuita.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+        <div class="section-header scroll-reveal">
+            <div class="section-tag">PORTAFOLIO</div>
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <p class="section-description">Una selección de trabajos recientes que demuestran mi experiencia y habilidades.</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card scroll-reveal">
+                <div class="project-video">
+                    <video controls onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
+                        <source src="proyectos destacados/campana&asociados.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">Sitio Web</span>
+                        <span class="tag">Responsive</span>
+                        <span class="tag">Moderno</span>
+                    </div>
+                    <h3>Campana & Asociados</h3>
+                    <p>Sitio web profesional para firma legal, desarrollado con diseño moderno y funcionalidades avanzadas para showcasing de servicios legales especializados.</p>
+                    <a href="#" class="project-link" aria-label="Ver detalles del proyecto Campana & Asociados - Sitio web para firma legal">Ver detalles →</a>
+                </div>
+            </div>
+            <div class="project-card scroll-reveal">
+                <div class="project-video">
+                    <video controls onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
+                        <source src="proyectos destacados/nexusvr.com.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">VR/AR</span>
+                        <span class="tag">WebGL</span>
+                        <span class="tag">Interactivo</span>
+                    </div>
+                    <h3>NexusVR</h3>
+                    <p>Plataforma web inmersiva para experiencias de realidad virtual, desarrollada con tecnologías avanzadas de WebGL y diseño interactivo de vanguardia.</p>
+                    <a href="#" class="project-link" aria-label="Ver detalles del proyecto NexusVR - Plataforma de realidad virtual">Ver detalles →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-header scroll-reveal">
+            <div class="section-tag">TESTIMONIOS</div>
+            <h2 class="section-title">Lo que dicen mis clientes</h2>
+            <p class="section-description">Opiniones reales de clientes satisfechos con mi trabajo.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card scroll-reveal">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">Excelente trabajo, muy profesional y cumplió con todos los plazos. El sitio web quedó mejor de lo que esperaba. Totalmente recomendado para proyectos de e-commerce.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <h4>María González</h4>
+                        <p>CEO de Fashion Store</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card scroll-reveal">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">Yonaiker transformó nuestra visión en realidad. Su atención al detalle y capacidad para entender nuestras necesidades fue impresionante. El dashboard que creó superó nuestras expectativas.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">C</div>
+                    <div class="author-info">
+                        <h4>Carlos Ramírez</h4>
+                        <p>Director de TechSolutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card scroll-reveal">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">Comunicación constante, entregas a tiempo y un resultado final increíble. Hemos trabajado en varios proyectos juntos y siempre entrega calidad superior.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">L</div>
+                    <div class="author-info">
+                        <h4>Laura Mendoza</h4>
+                        <p>Fundadora de StartupHub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="section-header scroll-reveal">
+            <div class="section-tag">CONTACTO</div>
+            <h2 class="section-title">¿Hablamos de tu proyecto?</h2>
+            <p class="section-description">Estoy disponible para trabajar en tu próximo proyecto. ¡Contáctame!</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info scroll-reveal">
+                <h3>Trabajo 100% Remoto</h3>
+                <p>Transformo ideas en experiencias web excepcionales con servicios profesionales de desarrollo y diseño web, trabajando completamente en línea para brindarte la mejor atención y resultados.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:cyonaiker76@gmail.com">cyonaiker76@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/51906057426">+51 906 057 426</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-text">
+                            <h4>Ubicación</h4>
+                            <p>Toda Latinoamérica<br><strong>100% Trabajo Remoto</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-services scroll-reveal">
+                <div class="section-header">
+                    <div class="section-tag">SERVICIOS</div>
+                    <h2 class="section-title">Servicios Web Profesionales</h2>
+                    <p class="section-description">Ofrezco servicios completos de desarrollo y diseño web adaptados a tus necesidades específicas. Con más de 3 años de experiencia, creo soluciones digitales modernas, funcionales y optimizadas que impulsan el crecimiento de tu negocio en toda Latinoamérica.</p>
+                    <p class="section-description"><strong>Beneficio especial:</strong> La primera actualización después de completar y entregar tu proyecto es completamente gratuita.</p>
+                </div>
+                <div class="services-overview">
+                    <div class="services-list">
+                        <div class="service-feature">
+                            <span class="feature-icon">🎨</span>
+                            <span>UI/UX Design Moderno</span>
+                        </div>
+                        <div class="service-feature">
+                            <span class="feature-icon">💻</span>
+                            <span>Desarrollo Frontend</span>
+                        </div>
+                        <div class="service-feature">
+                            <span class="feature-icon">⚙️</span>
+                            <span>Sistemas Backend</span>
+                        </div>
+                        <div class="service-feature">
+                            <span class="feature-icon">🛒</span>
+                            <span>E-commerce Completo</span>
+                        </div>
+                        <div class="service-feature">
+                            <span class="feature-icon">📝</span>
+                            <span>WordPress</span>
+                        </div>
+                    </div>
+                    <p class="service-cta">¿Listo para llevar tu proyecto al siguiente nivel? ¡Hablemos!</p>
+                </div>
+            </div>
+            <div class="contact-form scroll-reveal">
+                <h3>Envíame un Mensaje</h3>
+                <p class="form-description">Completa el formulario y tu mensaje será enviado directamente a mi email. Te responderé lo antes posible.</p>
+                <form method="post" action="#" id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" placeholder="¿De qué quieres hablar?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto, ideas, presupuesto, plazos... ¡Todo lo que necesites!" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-icon">📧</span>
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 <span class="footer-gradient">ZyvexWeb</span> - Desarrollo y Diseño Web Profesional. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Menú móvil hamburguesa
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú cuando se hace clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (navLinks.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navegación activa
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const navLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                if (entry.isIntersecting) {
+                    navItems.forEach(link => link.classList.remove('active'));
+                    if (navLink) navLink.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Formulario de contacto
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const button = e.target.querySelector('button');
+            const originalText = button.innerHTML;
+
+            button.innerHTML = '<span class="btn-icon">✅</span> Enviando...';
+            button.style.pointerEvents = 'none';
+
+            const templateParams = {
+                user_name: e.target.nombre.value,
+                user_email: e.target.email.value,
+                from_name: e.target.nombre.value,
+                from_email: e.target.email.value,
+                name: e.target.nombre.value,
+                email: e.target.email.value,
+                subject: e.target.asunto.value,
+                message: e.target.mensaje.value,
+                to_email: 'cyonaiker76@gmail.com'
+            };
+
+            console.log('Enviando email con parámetros:', templateParams);
+
+            emailjs.send('service_i9d4uc4', 'template_65nzjga', templateParams)
+                .then(function(response) {
+                    console.log('✅ Email enviado exitosamente:', response);
+                    button.innerHTML = '<span class="btn-icon">🎉</span> ¡Mensaje Enviado!';
+                    button.style.background = 'linear-gradient(135deg, #00f5ff, #28a745)';
+
+                    setTimeout(() => {
+                        e.target.reset();
+                        button.innerHTML = originalText;
+                        button.style.pointerEvents = 'auto';
+                        button.style.background = '';
+                    }, 3000);
+                })
+                .catch(function(error) {
+                    console.error('❌ Error al enviar email:', error);
+                    button.innerHTML = '<span class="btn-icon">❌</span> Error al enviar';
+                    button.style.background = 'linear-gradient(135deg, #ff4757, #ff3838)';
+
+                    alert('Error al enviar el mensaje: ' + (error.text || error.message) + '\n\nRevisa la consola del navegador (F12) para más detalles.');
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.style.pointerEvents = 'auto';
+                        button.style.background = '';
+                    }, 3000);
+                });
+        });
+
+        // WhatsApp Tooltip Animation
+        const whatsappTooltip = document.getElementById('whatsappTooltip');
+        let tooltipInterval;
+        let tooltipTimeout;
+
+        function showWhatsAppTooltip() {
+            whatsappTooltip.classList.add('show');
+            tooltipTimeout = setTimeout(() => {
+                whatsappTooltip.classList.remove('show');
+            }, 10000);
+        }
+
+        function hideWhatsAppTooltip() {
+            whatsappTooltip.classList.remove('show');
+            if (tooltipTimeout) {
+                clearTimeout(tooltipTimeout);
+            }
+        }
+
+        function startTooltipCycle() {
+            setTimeout(showWhatsAppTooltip, 8000);
+            tooltipInterval = setInterval(() => {
+                showWhatsAppTooltip();
+            }, 30000);
+        }
+
+        function stopTooltipCycle() {
+            if (tooltipInterval) {
+                clearInterval(tooltipInterval);
+            }
+            hideWhatsAppTooltip();
+        }
+
+        startTooltipCycle();
+
+        document.querySelector('.whatsapp-float').addEventListener('mouseenter', stopTooltipCycle);
+        document.querySelector('.whatsapp-float').addEventListener('mouseleave', startTooltipCycle);
+        document.querySelector('.whatsapp-float').addEventListener('click', stopTooltipCycle);
+
+        // Función de prueba para EmailJS
+        window.testEmailJS = function() {
+            const testParams = {
+                user_name: 'Test User',
+                user_email: 'test@example.com',
+                from_name: 'Test User',
+                from_email: 'test@example.com',
+                name: 'Test User',
+                email: 'test@example.com',
+                subject: 'Test Email - EmailJS Configuration',
+                message: 'Este es un email de prueba para verificar que EmailJS esté configurado correctamente.',
+                to_email: 'cyonaiker76@gmail.com'
+            };
+
+            console.log('🧪 Probando EmailJS...');
+            console.log('📋 Parámetros de prueba:', testParams);
+
+            return emailjs.send('service_i9d4uc4', 'template_65nzjga', testParams)
+                .then(function(response) {
+                    console.log('✅ Email de prueba enviado exitosamente:', response);
+                    alert('✅ Email de prueba enviado correctamente!\n\nRevisa tu bandeja de entrada en cyonaiker76@gmail.com');
+                    return response;
+                })
+                .catch(function(error) {
+                    console.error('❌ Error en email de prueba:', error);
+                    alert('❌ Error en email de prueba:\n\n' + (error.text || error.message) + '\n\nRevisa la consola para más detalles.');
+                    throw error;
+                });
+        };
+
+        console.log('🔧 EmailJS configurado y listo');
+        console.log('🧪 Para probar EmailJS, ejecuta: testEmailJS() en la consola');
+        console.log('📧 Service ID: service_i9d4uc4');
+        console.log('📋 Template ID: template_65nzjga');
+        console.log('📬 Email destino: cyonaiker76@gmail.com');
+    </script>
+</body>
+</html>
