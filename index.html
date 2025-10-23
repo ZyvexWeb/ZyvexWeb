@@ -59,6 +59,7 @@
             position: fixed;
             top: 0;
             width: 100%;
+            max-width: 100%;
             background: rgba(10, 10, 10, 0.95);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
@@ -69,6 +70,7 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 245, 255, 0.1);
             transition: all 0.3s ease;
+            overflow-x: hidden;
         }
 
         nav.scrolled {
@@ -677,6 +679,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: 13px;
+            overflow: hidden;
         }
 
         .project-info {
@@ -1021,8 +1024,8 @@
 
         /* Media Queries Responsivas */
         @media (max-width: 1024px) {
-            nav {
-                padding: 15px 5%;
+            .security-badge {
+                display: none;
             }
 
             .nav-links {
@@ -1031,9 +1034,11 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
+                max-width: 100%;
                 background: var(--dark);
                 flex-direction: column;
                 padding: 20px;
+                box-sizing: border-box;
                 box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
@@ -1112,6 +1117,7 @@
 
             nav {
                 padding: 15px 4%;
+                max-width: 100%;
             }
 
             .hero {
@@ -1274,6 +1280,7 @@
 
             nav {
                 padding: 12px 3%;
+                max-width: 100%;
             }
 
             .hero {
@@ -1456,7 +1463,7 @@
             <li><a href="#proyectos">Proyectos</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <button class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
             <span></span>
             <span></span>
             <span></span>
