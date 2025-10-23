@@ -899,10 +899,31 @@
             transition: all 0.3s ease;
         }
 
-        .tag:hover {
-            background: rgba(0, 245, 255, 0.2);
-            border-color: rgba(0, 245, 255, 0.4);
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 10px;
+            box-shadow: 0 4px 12px rgba(0, 245, 255, 0.3);
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .security-badge:hover {
             transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 245, 255, 0.5);
+        }
+
+        .security-badge::before {
+            content: "🔒";
+            font-size: 14px;
         }
 
         .project-link {
@@ -1068,11 +1089,12 @@
                 gap: 30px;
             }
 
-            .contact-form {
-                grid-column: span 1;
+            .security-badge {
+                font-size: 12px;
+                padding: 8px 16px;
+                margin: 15px 0;
             }
         }
-
         /* Mobile: ajustar posición del tooltip para que no se salga de la pantalla */
         @media (max-width: 768px) {
             .whatsapp-tooltip {
@@ -1404,13 +1426,10 @@
                 font-size: 20px;
             }
 
-            .whatsapp-tooltip {
-                bottom: 75px;
-                right: 15px;
-                font-size: 9px;
-                padding: 5px 8px;
-                max-width: 180px;
-                text-align: center;
+            .security-badge {
+                font-size: 11px;
+                padding: 6px 12px;
+                margin: 10px 0;
             }
         }
     </style>
@@ -1428,6 +1447,7 @@
         <div class="logo-container">
             <div class="logo-icon">Z</div>
             <div class="logo-text">ZyvexWeb</div>
+            <div class="security-badge">Sitio web seguro con conexión cifrada (HTTPS)</div>
         </div>
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
