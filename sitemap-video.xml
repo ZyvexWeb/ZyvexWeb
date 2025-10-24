@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <!-- Videos de proyectos -->
+  <url>
+    <loc>https://zyvexweb.github.io/ZyvexWeb/#proyectos</loc>
+    <video:video>
+      <video:thumbnail_loc>https://zyvexweb.github.io/ZyvexWeb/logo-mi marca/Captura de pantalla 2025-10-22 033225.png</video:thumbnail_loc>
+      <video:title>Campana & Asociados - Sitio Web para Firma Legal</video:title>
+      <video:description>Sitio web profesional para firma legal, desarrollado con diseño moderno y funcionalidades avanzadas para showcasing de servicios legales especializados.</video:description>
+      <video:player_loc>https://zyvexweb.github.io/ZyvexWeb/proyectos destacados/campana&amp;asociados.mp4</video:player_loc>
+      <video:duration>30</video:duration>
+      <video:publication_date>2025-01-25</video:publication_date>
+      <video:tag>sitio web</video:tag>
+      <video:tag>responsive</video:tag>
+      <video:tag>moderno</video:tag>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://zyvexweb.github.io/ZyvexWeb/#proyectos</loc>
+    <video:video>
+      <video:thumbnail_loc>https://zyvexweb.github.io/ZyvexWeb/logo-mi marca/Captura de pantalla 2025-10-22 033225.png</video:thumbnail_loc>
+      <video:title>NexusVR - Plataforma de Realidad Virtual</video:title>
+      <video:description>Plataforma web inmersiva para experiencias de realidad virtual, desarrollada con tecnologías avanzadas de WebGL y diseño interactivo de vanguardia.</video:description>
+      <video:player_loc>https://zyvexweb.github.io/ZyvexWeb/proyectos destacados/nexusvr.com.mp4</video:player_loc>
+      <video:duration>25</video:duration>
+      <video:publication_date>2025-01-25</video:publication_date>
+      <video:tag>VR</video:tag>
+      <video:tag>AR</video:tag>
+      <video:tag>WebGL</video:tag>
+      <video:tag>interactivo</video:tag>
+    </video:video>
+  </url>
+</urlset>

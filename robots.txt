@@ -3,6 +3,7 @@ Allow: /
 
 # Sitemap para GitHub Pages
 Sitemap: https://zyvexweb.github.io/ZyvexWeb/sitemap.xml
+Sitemap: https://zyvexweb.github.io/ZyvexWeb/sitemap-video.xml
 
 # Performance optimizations
 Allow: /assets/
