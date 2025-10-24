@@ -16,25 +16,6 @@
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "any maskable"
-        },
-        {
-            "src": "favicon.ico",
-            "sizes": "32x32",
-            "type": "image/x-icon"
-        }
-    ],
-    "screenshots": [
-        {
-            "src": "assets/screenshot-desktop.png",
-            "sizes": "1280x720",
-            "type": "image/png",
-            "form_factor": "wide"
-        },
-        {
-            "src": "assets/screenshot-mobile.png",
-            "sizes": "360x640",
-            "type": "image/png",
-            "form_factor": "narrow"
         }
     ],
     "prefer_related_applications": false

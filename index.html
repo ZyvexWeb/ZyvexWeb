@@ -27,7 +27,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="manifest" href="manifest.json">
 
     <!-- PWA Configuration - Sin theme-color para evitar warnings -->
@@ -697,6 +696,34 @@
             justify-content: center;
             border: 2px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-video::after {
+            content: "▶️ Haz clic para ver";
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 245, 255, 0.3);
+            z-index: 10;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-video:hover::after {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px);
         }
 
         .project-video:hover {
@@ -2131,6 +2158,32 @@
             .project-video video {
                 border-radius: 12px;
             }
+
+            /* Ajustar indicador para móvil */
+            .project-video::after {
+                font-size: 12px;
+                padding: 6px 12px;
+                bottom: 12px;
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-video::after {
+                font-size: 10px;
+                padding: 4px 8px;
+                bottom: 8px;
+                border-radius: 15px;
+            }
+        }
+
+        @media (max-width: 379px) {
+            .project-video::after {
+                font-size: 8px;
+                padding: 3px 6px;
+                bottom: 6px;
+                content: "▶️ Toca para ver";
+            }
         }
 
         /* Loading skeleton para imágenes */
@@ -2245,8 +2298,6 @@
         <div class="about-content scroll-reveal">
             <div class="about-image">
                 <picture>
-                    <source srcset="logo-mi marca/Captura de pantalla 2025-10-22 033225.webp" type="image/webp">
-                    <source srcset="logo-mi marca/Captura de pantalla 2025-10-22 033225.jpg" type="image/jpeg">
                     <img src="logo-mi marca/Captura de pantalla 2025-10-22 033225.png"
                          alt="Logo de ZyvexWeb - Yonaiker Contreras - Desarrollador y Diseñador Web Profesional"
                          class="about-logo"
@@ -2416,7 +2467,7 @@
         <div class="projects-grid">
             <div class="project-card scroll-reveal">
                 <div class="project-video">
-                    <video controls loading="lazy" preload="metadata" poster="proyectos destacados/campana&asociados-thumb.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
+                    <video controls loading="lazy" preload="metadata" poster="logo-mi marca/Captura de pantalla 2025-10-22 033225.png" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
                         <source src="proyectos destacados/campana&asociados.mp4" type="video/mp4">
                         <source src="proyectos destacados/campana&asociados.webm" type="video/webm">
                         Tu navegador no soporta el elemento de video.
@@ -2435,7 +2486,7 @@
             </div>
             <div class="project-card scroll-reveal">
                 <div class="project-video">
-                    <video controls loading="lazy" preload="metadata" poster="proyectos destacados/nexusvr-thumb.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
+                    <video controls loading="lazy" preload="metadata" poster="logo-mi marca/Captura de pantalla 2025-10-22 033225.png" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
                         <source src="proyectos destacados/nexusvr.com.mp4" type="video/mp4">
                         <source src="proyectos destacados/nexusvr.com.webm" type="video/webm">
                         Tu navegador no soporta el elemento de video.
