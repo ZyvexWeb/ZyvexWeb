@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: y https://zyvexweb.github.io/ZyvexWeb/sitemap.xml
+Sitemap: https://zyvexweb.github.io/ZyvexWeb/sitemap.xml
 
 # Performance optimizations
 Allow: /assets/
