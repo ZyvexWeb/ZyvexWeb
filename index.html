@@ -28,6 +28,37 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- PWA Configuration - Sin theme-color para evitar warnings -->
+    <meta name="color-scheme" content="dark light">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ZyvexWeb">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <!-- CSS para manejar theme en todos los navegadores -->
+    <style>
+        /* Theme color usando CSS - compatible con TODOS los navegadores */
+        :root {
+            color-scheme: dark light;
+        }
+
+        /* Firefox específico */
+        @supports (-moz-appearance: none) {
+            :root {
+                color-scheme: dark light;
+            }
+        }
+
+        /* Webkit browsers (Chrome, Safari, Edge) */
+        @media (min-resolution: 2dppx) {
+            :root {
+                color-scheme: dark light;
+            }
+        }
+    </style>
 
     <title>ZyvexWeb | Desarrollo y Diseño Web Profesional</title>
     <style>
@@ -1022,7 +1053,50 @@
             font-style: italic;
         }
 
-        /* Media Queries Responsivas */
+        /* Media Queries Responsivas Mejoradas - Breakpoints adicionales para mejor compatibilidad */
+        /* Tablets grandes y laptops pequeñas (1200px - 1400px) */
+        @media (max-width: 1400px) {
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .hero p {
+                font-size: 19px;
+            }
+
+            .about-content {
+                gap: 50px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 35px;
+            }
+        }
+
+        /* Tablets y dispositivos medianos (1024px - 1199px) */
+        @media (max-width: 1199px) {
+            nav {
+                padding: 18px 6%;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .stats-grid {
+                gap: 35px;
+            }
+
+            .about-content {
+                gap: 45px;
+            }
+        }
+
         @media (max-width: 1024px) {
             .security-badge {
                 display: none;
@@ -1068,10 +1142,12 @@
 
             .hero h1 {
                 font-size: 48px;
+                margin-bottom: 20px;
             }
 
             .hero p {
                 font-size: 18px;
+                margin-bottom: 35px;
             }
 
             .about-content {
@@ -1094,12 +1170,58 @@
                 gap: 30px;
             }
 
-            .security-badge {
-                font-size: 12px;
-                padding: 8px 16px;
-                margin: 15px 0;
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
             }
         }
+        /* Tablets (768px - 1023px) */
+        @media (max-width: 1023px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .hero {
+                padding: 75px 4% 45px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 44px;
+                line-height: 1.15;
+            }
+
+            .hero p {
+                font-size: 17px;
+                line-height: 1.7;
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .stats {
+                padding: 70px 5%;
+            }
+
+            .about {
+                padding: 70px 5%;
+            }
+
+            .tech-stack, .process, .services, .projects, .testimonials, .contact {
+                padding: 70px 5%;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .section-description {
+                font-size: 17px;
+            }
+        }
+
         /* Mobile: ajustar posición del tooltip para que no se salga de la pantalla */
         @media (max-width: 768px) {
             .whatsapp-tooltip {
@@ -1120,6 +1242,17 @@
                 max-width: 100%;
             }
 
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+                margin-right: 10px;
+            }
+
             .hero {
                 padding: 70px 4% 40px;
                 min-height: 80vh;
@@ -1128,20 +1261,24 @@
             .hero h1 {
                 font-size: 36px;
                 margin-bottom: 20px;
+                line-height: 1.2;
             }
 
             .hero p {
                 font-size: 16px;
                 margin-bottom: 30px;
+                line-height: 1.6;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 gap: 15px;
+                align-items: center;
             }
 
             .btn {
                 width: 100%;
+                max-width: 280px;
                 text-align: center;
                 padding: 12px 24px;
                 font-size: 14px;
@@ -1164,6 +1301,10 @@
                 font-size: 36px;
             }
 
+            .stat-label {
+                font-size: 15px;
+            }
+
             .about {
                 padding: 80px 4%;
             }
@@ -1172,12 +1313,17 @@
                 gap: 30px;
             }
 
+            .about-image {
+                height: 280px;
+            }
+
             .about-text h3 {
                 font-size: 28px;
             }
 
             .about-text p {
                 font-size: 16px;
+                line-height: 1.7;
             }
 
             .tech-stack, .process, .services, .projects, .testimonials, .contact {
@@ -1186,10 +1332,16 @@
 
             .section-title {
                 font-size: 32px;
+                text-align: center;
             }
 
             .section-description {
                 font-size: 16px;
+                text-align: center;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
             }
 
             .tech-grid {
@@ -1219,11 +1371,6 @@
                 gap: 30px;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
             .project-info {
                 padding: 25px;
             }
@@ -1236,12 +1383,34 @@
                 font-size: 14px;
             }
 
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .testimonial-card {
+                padding: 30px;
+            }
+
+            .contact-content {
+                gap: 25px;
+            }
+
+            .contact-info {
+                padding: 30px;
+            }
+
             .contact-form {
                 padding: 20px;
+                grid-column: span 1;
             }
 
             .contact-form h3 {
                 font-size: 20px;
+            }
+
+            .form-description {
+                font-size: 14px;
             }
 
             .form-group input,
@@ -1268,6 +1437,219 @@
             }
         }
 
+        /* Teléfonos grandes (481px - 767px) */
+        @media (max-width: 767px) {
+            .whatsapp-tooltip {
+                right: 8px;
+                left: 8px;
+                bottom: 80px;
+                max-width: calc(100vw - 16px);
+                text-align: center;
+                transform: translateY(15px) scale(0.95);
+                font-size: 11px;
+                padding: 8px 12px;
+            }
+
+            .whatsapp-tooltip.show {
+                transform: translateY(0) scale(1);
+            }
+
+            nav {
+                padding: 12px 3%;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+                margin-right: 8px;
+            }
+
+            .hero {
+                padding: 65px 3% 35px;
+                min-height: 75vh;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+                margin-bottom: 18px;
+                line-height: 1.25;
+            }
+
+            .hero p {
+                font-size: 15px;
+                margin-bottom: 25px;
+                line-height: 1.6;
+            }
+
+            .hero-buttons {
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 11px 20px;
+                font-size: 13px;
+                border-radius: 8px;
+            }
+
+            .stats {
+                padding: 55px 3%;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+
+            .stat-item {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .stat-label {
+                font-size: 14px;
+            }
+
+            .about {
+                padding: 65px 3%;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .about-text h3 {
+                font-size: 26px;
+                text-align: center;
+            }
+
+            .about-text p {
+                font-size: 15px;
+                text-align: left;
+            }
+
+            .tech-stack, .process, .services, .projects, .testimonials, .contact {
+                padding: 65px 3%;
+            }
+
+            .section-title {
+                font-size: 28px;
+                text-align: center;
+            }
+
+            .section-description {
+                font-size: 15px;
+                text-align: center;
+            }
+
+            .section-tag {
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .tech-item {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .tech-icon {
+                font-size: 35px;
+            }
+
+            .tech-name {
+                font-size: 12px;
+            }
+
+            .process-step, .service-card, .testimonial-card {
+                padding: 25px;
+                border-radius: 15px;
+            }
+
+            .process-step h3, .service-card h3 {
+                font-size: 18px;
+            }
+
+            .process-step p, .service-card p, .testimonial-text {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .project-info {
+                padding: 20px;
+            }
+
+            .project-info h3 {
+                font-size: 18px;
+            }
+
+            .project-info p {
+                font-size: 13px;
+            }
+
+            .contact-info {
+                padding: 25px;
+            }
+
+            .contact-item {
+                padding: 15px;
+                border-radius: 12px;
+            }
+
+            .contact-form {
+                padding: 18px;
+                border-radius: 15px;
+            }
+
+            .contact-form h3 {
+                font-size: 18px;
+            }
+
+            .form-description {
+                font-size: 13px;
+            }
+
+            .form-group label {
+                font-size: 11px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 9px 11px;
+                font-size: 15px;
+                border-radius: 8px;
+            }
+
+            .whatsapp-float {
+                width: 52px;
+                height: 52px;
+                bottom: 18px;
+                right: 18px;
+                font-size: 22px;
+                border-radius: 50%;
+            }
+
+            .whatsapp-tooltip {
+                bottom: 78px;
+                right: 18px;
+                font-size: 9px;
+                padding: 4px 8px;
+                max-width: 180px;
+            }
+        }
+
         @media (max-width: 480px) {
             .whatsapp-tooltip {
                 right: 5px;
@@ -1283,6 +1665,17 @@
                 max-width: 100%;
             }
 
+            .logo-text {
+                font-size: 18px;
+            }
+
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 15px;
+                margin-right: 6px;
+            }
+
             .hero {
                 padding: 60px 3% 30px;
                 min-height: 70vh;
@@ -1291,11 +1684,13 @@
             .hero h1 {
                 font-size: 28px;
                 line-height: 1.2;
+                margin-bottom: 15px;
             }
 
             .hero p {
                 font-size: 15px;
                 line-height: 1.6;
+                margin-bottom: 20px;
             }
 
             .hero-buttons {
@@ -1333,7 +1728,7 @@
             }
 
             .about-image {
-                height: 250px;
+                height: 220px;
             }
 
             .about-text h3 {
@@ -1439,6 +1834,338 @@
                 margin: 10px 0;
             }
         }
+
+        /* Teléfonos muy pequeños (320px - 379px) */
+        @media (max-width: 379px) {
+            .hero h1 {
+                font-size: 24px;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .section-title {
+                font-size: 22px;
+                line-height: 1.3;
+            }
+
+            .section-description {
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                bottom: 12px;
+                right: 12px;
+            }
+
+            .whatsapp-tooltip {
+                font-size: 7px;
+                padding: 3px 5px;
+                bottom: 65px;
+            }
+        }
+
+        /* Orientación landscape en móviles */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding: 40px 4% 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 12px;
+                width: auto;
+                min-width: 120px;
+            }
+
+            .stats, .about, .tech-stack, .process, .services, .projects, .testimonials, .contact {
+                padding: 40px 4%;
+            }
+        }
+
+        /* Mejora de accesibilidad y usabilidad */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .grid-bg {
+                animation: none;
+            }
+
+            .hero h1 .gradient-text {
+                animation: none;
+                background-size: 100% 100%;
+            }
+        }
+
+        /* Alto contraste para mejor accesibilidad */
+        @media (prefers-contrast: high) {
+            :root {
+                --dark: #000000;
+                --dark-light: #111111;
+                --text: #ffffff;
+                --text-gray: #cccccc;
+                --primary: #00ffff;
+                --secondary: #9932cc;
+            }
+
+            .btn-primary {
+                border: 2px solid var(--primary);
+            }
+
+            .btn-secondary {
+                border: 2px solid var(--text);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            nav, .whatsapp-float, .whatsapp-tooltip {
+                display: none;
+            }
+
+            .hero, .stats, .about, .tech-stack, .process, .services, .projects, .testimonials, .contact {
+                padding: 20px 0;
+            }
+
+            .section-title {
+                color: black;
+                background: none;
+                -webkit-background-clip: unset;
+                background-clip: unset;
+                color: black;
+                -webkit-text-fill-color: unset;
+            }
+        }
+
+        /* Soporte para tema oscuro automático del sistema */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --dark: #ffffff;
+                --dark-light: #f8f9fa;
+                --text: #212529;
+                --text-gray: #6c757d;
+                --primary: #007bff;
+                --secondary: #6f42c1;
+            }
+
+            body {
+                background: var(--dark);
+                color: var(--text);
+            }
+
+            nav {
+                background: rgba(248, 249, 250, 0.95);
+                border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+            }
+
+            .stat-item, .tech-item, .process-step, .service-card, .testimonial-card, .contact-info, .contact-form {
+                background: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 123, 255, 0.1);
+            }
+        }
+
+        /* Mejoras para navegación por teclado */
+        .nav-links a:focus,
+        .btn:focus,
+        .whatsapp-float:focus,
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Skip link para accesibilidad */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 9999;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Loading states mejorados */
+        .loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Optimizaciones de performance para dispositivos móviles */
+        .project-video video {
+            will-change: auto;
+        }
+
+        .scroll-reveal {
+            will-change: transform, opacity;
+        }
+
+        /* Mejoras para pantallas de alta densidad (Retina) - image-rendering pixelated universal */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .logo-icon, .whatsapp-float {
+                /* Usamos pixelated que es compatible con TODOS los navegadores modernos */
+                /* WebKit browsers (Chrome, Safari, iOS) */
+                -webkit-image-rendering: -webkit-optimize-contrast;
+                /* Firefox, Edge, todos los navegadores modernos */
+                image-rendering: pixelated;
+                -ms-interpolation-mode: nearest-neighbor;
+                /* Nota: pixelated produce el mismo efecto visual que crisp-edges */
+            }
+        }
+
+        /* Fallback para navegadores muy antiguos */
+        @supports (-ms-ime-align: auto) or (-ms-user-select: none) {
+            .logo-icon, .whatsapp-float {
+                image-rendering: pixelated;
+                -ms-interpolation-mode: nearest-neighbor;
+            }
+        }
+
+        /* Soporte para hover en dispositivos táctiles */
+        @media (hover: none) {
+            .nav-links a:hover,
+            .btn:hover,
+            .whatsapp-float:hover,
+            .tech-item:hover,
+            .process-step:hover,
+            .service-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        /* Mejoras para scroll - Compatible con todos los navegadores modernos */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overscroll-behavior: none;
+            /* Nota: -webkit-overflow-scrolling no es necesario en navegadores modernos */
+            /* Los navegadores modernos usan overscroll-behavior para el mismo efecto */
+        }
+
+        /* Focus visible mejorado */
+        *:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* Optimizaciones adicionales de performance */
+        .project-video video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mejoras para videos en dispositivos móviles */
+        @media (max-width: 768px) {
+            .project-video {
+                height: 180px;
+            }
+
+            .project-video video {
+                border-radius: 12px;
+            }
+        }
+
+        /* Loading skeleton para imágenes */
+        .about-logo[data-loading="true"] {
+            background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Mejoras para el skip link */
+        .skip-link {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+        .skip-link:focus {
+            clip: auto;
+            clip-path: none;
+            height: auto;
+            overflow: visible;
+            position: static;
+            white-space: normal;
+            width: auto;
+            z-index: 999999;
+        }
     </style>
 
     <!-- EmailJS - Versión más reciente -->
@@ -1478,6 +2205,9 @@
         <span class="whatsapp-tooltip-text">💬 ¡CONTÁCTAME!</span>
     </div>
 
+    <!-- Skip link para accesibilidad -->
+    <a href="#inicio" class="skip-link">Saltar al contenido principal</a>
+
     <section class="hero" id="inicio">
         <div class="grid-bg"></div>
         <div class="hero-content scroll-reveal">
@@ -1514,7 +2244,16 @@
     <section class="about" id="sobre-mi">
         <div class="about-content scroll-reveal">
             <div class="about-image">
-                <img src="logo-mi marca/Captura de pantalla 2025-10-22 033225.png" alt="Logo de ZyvexWeb - Yonaiker Contreras - Desarrollador y Diseñador Web Profesional" class="about-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <picture>
+                    <source srcset="logo-mi marca/Captura de pantalla 2025-10-22 033225.webp" type="image/webp">
+                    <source srcset="logo-mi marca/Captura de pantalla 2025-10-22 033225.jpg" type="image/jpeg">
+                    <img src="logo-mi marca/Captura de pantalla 2025-10-22 033225.png"
+                         alt="Logo de ZyvexWeb - Yonaiker Contreras - Desarrollador y Diseñador Web Profesional"
+                         class="about-logo"
+                         loading="lazy"
+                         decoding="async"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                </picture>
                 <div class="about-fallback">🏢</div>
             </div>
             <div class="about-text">
@@ -1677,8 +2416,9 @@
         <div class="projects-grid">
             <div class="project-card scroll-reveal">
                 <div class="project-video">
-                    <video controls onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
+                    <video controls loading="lazy" preload="metadata" poster="proyectos destacados/campana&asociados-thumb.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
                         <source src="proyectos destacados/campana&asociados.mp4" type="video/mp4">
+                        <source src="proyectos destacados/campana&asociados.webm" type="video/webm">
                         Tu navegador no soporta el elemento de video.
                     </video>
                 </div>
@@ -1695,8 +2435,9 @@
             </div>
             <div class="project-card scroll-reveal">
                 <div class="project-video">
-                    <video controls onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
+                    <video controls loading="lazy" preload="metadata" poster="proyectos destacados/nexusvr-thumb.jpg" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--primary);\'>🎬</div>';">
                         <source src="proyectos destacados/nexusvr.com.mp4" type="video/mp4">
+                        <source src="proyectos destacados/nexusvr.com.webm" type="video/webm">
                         Tu navegador no soporta el elemento de video.
                     </video>
                 </div>

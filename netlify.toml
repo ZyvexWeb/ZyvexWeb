@@ -18,6 +18,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Cache optimization for static assets
 [[headers]]
   for = "*.js"
   [headers.values]
@@ -29,6 +30,60 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Video optimization - longer cache for videos
+[[headers]]
+  for = "*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=63072000, immutable"
+
+[[headers]]
+  for = "*.webm"
+  [headers.values]
+    Cache-Control = "public, max-age=63072000, immutable"
+
+# Specific favicon cache
+[[headers]]
   for = "/favicon.svg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Logo cache
+[[headers]]
+  for = "/logo-mi marca/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Project videos cache
+[[headers]]
+  for = "/proyectos destacados/*"
+  [headers.values]
+    Cache-Control = "public, max-age=63072000, immutable"

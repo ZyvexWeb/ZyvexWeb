@@ -1,0 +1,41 @@
+{
+    "name": "ZyvexWeb - Portafolio Profesional",
+    "short_name": "ZyvexWeb",
+    "description": "Portafolio profesional de Yonaiker Contreras - Desarrollador y diseñador web especializado en React, Node.js y tecnologías modernas.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#0a0a0a",
+    "orientation": "portrait-primary",
+    "categories": ["portfolio", "business", "technology"],
+    "lang": "es",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/screenshot-desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "assets/screenshot-mobile.png",
+            "sizes": "360x640",
+            "type": "image/png",
+            "form_factor": "narrow"
+        }
+    ],
+    "prefer_related_applications": false
+}
